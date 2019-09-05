@@ -4,7 +4,7 @@ Ihonhoitoseerumeihin erikoistunut verkkokauppa myy erilaisia ihoseerumeita ihon 
 
 Kirjauduttua verkkokauppaan asiakas voi selata tuotteita ja tehdä tilauksen. Tilaus tehdään painamalla “lisää ostoskoriin”. Painamalla ostoskoria voi siirtyä tilauksen tekemiseen. Tämä vie lomakesivulle, jossa ilmoitetaan yhteystiedot ja maksukortin numero.
 
-## Toimintoja:
+## Toimintoja
 
 - Kirjautuminen
 - Tuotteiden selailu
@@ -13,3 +13,6 @@ Kirjauduttua verkkokauppaan asiakas voi selata tuotteita ja tehdä tilauksen. Ti
 - Tilaaminen
 - Tietojen syöttö
 
+## Tietokantakaavio
+
+![Tietokantakaavio, joka sisältää asiakas-, tilaus- ja tuotetaulut](Online-store-database-schema.png)
