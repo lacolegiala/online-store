@@ -8,5 +8,5 @@ def tasks_form():
 @app.route("/tasks/", methods=["POST"])
 def tasks_create():
     print(request.form.get("name"))
-  
+
     return "hello world!"
