@@ -1,5 +1,6 @@
-from application import app
+from application import app, db
 from flask import render_template, request
+from application.tasks.models import Task
 
 @app.route("/tasks/new/")
 def tasks_form():
@@ -7,6 +8,9 @@ def tasks_form():
 
 @app.route("/tasks/", methods=["POST"])
 def tasks_create():
-    print(request.form.get("name"))
+    t = Task(request.form.get("name"))
 
+    db.session().add(t)
+    db.session().commit()
+  
     return "hello world!"
