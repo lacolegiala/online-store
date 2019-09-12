@@ -1,5 +1,5 @@
 from application import app, db
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from application.tasks.models import Task
 
 @app.route("/tasks", methods=["GET"])
@@ -17,4 +17,4 @@ def tasks_create():
     db.session().add(t)
     db.session().commit()
   
-    return "hello world!"
+    return redirect(url_for("tasks_index"))
