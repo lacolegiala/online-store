@@ -13,8 +13,8 @@ def tasks_form():
 @app.route("/tasks/<task_id>/", methods=["POST"])
 def tasks_set_done(task_id):
 
-    t = Product.query.get(task_id)
-    t.done = True
+    product = Product.query.get(task_id)
+    product.price = 1000
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
