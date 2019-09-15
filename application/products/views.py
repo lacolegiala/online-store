@@ -21,7 +21,7 @@ def products_set_done(product_id):
 
 @app.route("/products/", methods=["POST"])
 def products_create():
-    t = Product(request.form.get("name"), 2000)
+    t = Product(request.form.get("name"), request.form.get("price"))
 
     db.session().add(t)
     db.session().commit()
