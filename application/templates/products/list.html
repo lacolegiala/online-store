@@ -3,12 +3,14 @@
 {% block body %}
   <table>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Price</th>
       <th></th>
     </tr>
     {% for product in products %}
     <tr>
+      <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
       <td>
