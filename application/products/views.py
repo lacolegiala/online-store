@@ -12,13 +12,20 @@ def products_form():
 
 @app.route("/products/edit/<product_id>")
 def products_edit(product_id):
-  return render_template("products/edit.html", product_id = product_id)
+
+  product = Product.query.get(product_id)
+
+  return render_template("products/edit.html",
+    product_id = product_id,
+    product_name = product.name, 
+    product_price = product.price
+  )
   
 @app.route("/products/<product_id>/", methods=["POST"])
 def products_set_done(product_id):
-
     product = Product.query.get(product_id)
-    product.price = 1000
+    product.price = request.form.get("price")
+    product.name = request.form.get("name")
     db.session().commit()
   
     return redirect(url_for("products_index"))

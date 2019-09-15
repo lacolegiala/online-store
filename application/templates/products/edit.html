@@ -5,6 +5,12 @@
   You are editing product id: {{ product_id }}
 </p>
 <form method="POST" action="{{ url_for('products_set_done', product_id=product_id) }}">
-  <input type="submit" value="Edit to change the price to 10 €"/>
+  <label> Product name
+    <input type="text" name="name" value="{{ product_name }}"/>
+  </label>
+  <label> Price
+    <input type="text" name="price" value="{{ product_price }}"/>
+  </label>
+  <input type="submit" value="Save"/>
 </form>
 {% endblock %}
