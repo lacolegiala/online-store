@@ -7,12 +7,12 @@
       <th>Price</th>
       <th></th>
     </tr>
-    {% for task in tasks %}
+    {% for product in products %}
     <tr>
-      <td>{{ task.name }}</td>
-      <td>{{ task.price }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
       <td>
-        <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
+        <form method="POST" action="{{ url_for('products_set_done', product_id=product.id) }}">
 	        <input type="submit" value="Change the price to 10 €!"/>
 	      </form>
       </td>
