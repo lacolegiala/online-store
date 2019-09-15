@@ -13,6 +13,12 @@ Kirjauduttua verkkokauppaan asiakas voi selata tuotteita ja tehdä tilauksen. Ti
 - Tilaaminen
 - Tietojen syöttö
 
+## Demo
+
+Tässä linkki tuotantoon, jossa voi kokeilla projektia:
+
+https://lacolegiala-online-store.herokuapp.com
+
 ## Tietokantakaavio
 
 ![Tietokantakaavio, joka sisältää asiakas-, tilaus- ja tuotetaulut](Online-store-database-schema.png)
