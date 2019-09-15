@@ -10,9 +10,9 @@ def products_index():
 def products_form():
     return render_template("products/new.html")
 
-@app.route("/products/edit")
-def products_edit():
-  return render_template("products/edit.html")
+@app.route("/products/edit/<product_id>")
+def products_edit(product_id):
+  return render_template("products/edit.html", product_id = product_id)
   
 @app.route("/products/<product_id>/", methods=["POST"])
 def products_set_done(product_id):

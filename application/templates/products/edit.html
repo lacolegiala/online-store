@@ -2,6 +2,9 @@
 
 {% block body %}
 <p>
-  Trolololol u can't edit shit yet
+  You are editing product id: {{ product_id }}
 </p>
+<form method="POST" action="{{ url_for('products_set_done', product_id=product_id) }}">
+  <input type="submit" value="Edit to change the price to 10 €"/>
+</form>
 {% endblock %}

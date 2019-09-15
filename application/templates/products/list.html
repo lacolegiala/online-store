@@ -14,7 +14,7 @@
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
       <td>
-        <a href="{{ url_for('products_edit')}}"> 
+        <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
           Edit
         </a>
       </td>
