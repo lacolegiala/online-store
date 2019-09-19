@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.products.models import Product
+from application.products.forms import NewProductForm
 
 @app.route("/products", methods=["GET"])
 def products_index():
@@ -8,7 +9,7 @@ def products_index():
 
 @app.route("/products/new/")
 def products_form():
-    return render_template("products/new.html")
+    return render_template("products/new.html", form = NewProductForm())
 
 @app.route("/products/edit/<product_id>")
 def products_edit(product_id):
@@ -32,7 +33,12 @@ def products_set_done(product_id):
 
 @app.route("/products/", methods=["POST"])
 def products_create():
-    t = Product(request.form.get("name"), request.form.get("price"))
+    form = NewProductForm(request.form)
+
+    if not form.validate():
+      return render_template("products/new.html", form = form)
+
+    t = Product(form.name.data, form.price.data)
 
     db.session().add(t)
     db.session().commit()
