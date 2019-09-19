@@ -38,9 +38,9 @@ def products_create():
     if not form.validate():
       return render_template("products/new.html", form = form)
 
-    t = Product(form.name.data, form.price.data)
+    product = Product(form.name.data, form.price.data)
 
-    db.session().add(t)
+    db.session().add(product)
     db.session().commit()
   
     return redirect(url_for("products_index"))
