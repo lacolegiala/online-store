@@ -13,20 +13,24 @@ def products_form():
 
 @app.route("/products/edit/<product_id>")
 def products_edit(product_id):
-
   product = Product.query.get(product_id)
+  form = NewProductForm()
+  form.name.data = product.name
+  form.price.data = product.price
 
-  return render_template("products/edit.html",
-    product_id = product_id,
-    product_name = product.name, 
-    product_price = product.price
-  )
+  return render_template("products/edit.html", form = form, product_id = product_id)
   
 @app.route("/products/<product_id>/", methods=["POST"])
 def products_set_done(product_id):
+    form = NewProductForm(request.form)
+
+    if not form.validate():
+      return render_template("products/edit.html", form = form)
+
     product = Product.query.get(product_id)
-    product.price = request.form.get("price")
-    product.name = request.form.get("name")
+    product.price = form.price.data
+    product.name = form.name.data
+
     db.session().commit()
   
     return redirect(url_for("products_index"))
