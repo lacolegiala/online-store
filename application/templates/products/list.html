@@ -18,6 +18,11 @@
           Edit
         </a>
       </td>
+      <td>
+        <a href="{{ url_for('products_remove', product_id=product.id)}}">
+          Remove
+        </a>
+      </td>
     </tr>
     {% endfor %}
   </table>

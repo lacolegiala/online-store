@@ -48,3 +48,11 @@ def products_create():
     db.session().commit()
   
     return redirect(url_for("products_index"))
+
+@app.route("/products/remove/<product_id>", methods=["GET"])
+def products_remove(product_id):
+  Product.query.filter_by(id=product_id).delete()
+
+  db.session().commit()
+
+  return redirect(url_for("products_index"))
