@@ -11,7 +11,8 @@
 	      {{ form.name.label }}
 	    </td>
 	    <td>
-	      {{ form.name }}
+        {{ form.name }}
+        <small id="help" class="form-text text-muted">Enter the name of the product.</small>
       </td>
       <td>
         <ul>
@@ -25,6 +26,7 @@
       </td>
       <td>
         {{ form.price }}
+        <small id="help" class="form-text text-muted">Enter the price of the product in cents.</small>
       </td>
       <td>
         <ul>
@@ -36,7 +38,7 @@
     </tr>
     <tr>
 	    <td colspan="2">
-	      <input type="submit" value="Save"/>
+	      <button type="submit" class="btn btn-primary">Save</button> 
 	    </td>
     </tr>
   </table>

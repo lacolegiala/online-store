@@ -2,27 +2,26 @@
 
 {% block body %}
   <table>
-    <tr>
+    <!-- <tr>
       <th>Id</th>
+      <td></td>
       <th>Name</th>
+      <td></td>
       <th>Price</th>
       <th></th>
-    </tr>
+     --></tr>
     {% for product in products %}
     <tr>
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.price }}</td>
-      <td>
-        <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
-          Edit
-        </a>
-      </td>
-      <td>
-        <a href="{{ url_for('products_remove', product_id=product.id)}}">
-          Remove
-        </a>
-      </td>
+      <ul class="list-group">
+        <li class="list-group-item"> Name: {{ product.name }} Price: {{ product.price }}
+          <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
+            Edit
+          </a>
+          <a href="{{ url_for('products_remove', product_id=product.id)}}">
+            Remove
+          </a>
+        </li>
+      </ul>
     </tr>
     {% endfor %}
   </table>
