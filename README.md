@@ -21,4 +21,4 @@ https://lacolegiala-online-store.herokuapp.com
 
 ## Tietokantakaavio
 
-![Tietokantakaavio, joka sisältää asiakas-, tilaus- ja tuotetaulut](Online-store-database-schema.png)
+![Tietokantakaavio, joka sisältää asiakas-, tilaus- ja tuotetaulut](https://raw.githubusercontent.com/lacolegiala/online-store/master/Online-store-database-schema.png)
