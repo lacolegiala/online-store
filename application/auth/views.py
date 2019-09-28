@@ -43,5 +43,7 @@ def auth_register_lol():
     db.session().add(user)
     db.session().commit()
 
+    login_user(user)
+
     return redirect(url_for("index"))
 
