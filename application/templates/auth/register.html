@@ -1,40 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('auth_register') }}">
-  <table>
-    <tr>
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Register</legend>
-        <div class="form-group">
-          {{ form.username.label }}
-          {{ form.username }}
-          <small id="help" class="form-text text-muted">Enter your username.</small>
-        </div>
-        <td>
-          <ul>
-            {% for error in form.username.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </td>
-        <div class="form-group">
-          {{ form.password.label }}
-          {{ form.password }}
-          <small id="help" class="form-text text-muted">Enter your password.</small>
-        </div>
-        <td>
-          <ul>
-            {% for error in form.password.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <button type="submit" class="btn btn-primary">Join now!</button>
-      </td>
-    </tr>
-</form>
+  <form method="POST" action="{{ url_for('auth_register') }}">
+    <legend class="border-bottom mb-4">Register</legend>
+    <div class="form-group">
+      {{ form.username.label }}
+      {{ form.username(class="form-control") }}
+      <small id="help" class="form-text text-muted">Enter your username.</small>
+    </div>
+    <ul>
+      {% for error in form.username.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    <div class="form-group">
+      {{ form.password.label }}
+      {{ form.password(class="form-control") }}
+      <small id="help" class="form-text text-muted">Enter your password.</small>
+    </div>
+    <ul>
+      {% for error in form.password.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    <button type="submit" class="btn btn-primary">Join now!</button>
+  </form>
 {% endblock %}
