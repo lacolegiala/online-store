@@ -2,39 +2,27 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('auth_login') }}">
-  <table>
-    <tr>
-	<fieldset class="form-group">
 	  <legend class="border-bottom mb-4">Login</legend>
 	  <div class="form-group">
 	    {{ form.username.label }}
-	    {{ form.username }}
+	    {{ form.username(class="form-control") }}
 	    <small id="help" class="form-text text-muted">Enter your username.</small>
 	  </div>
-	  <td>
 	    <ul>
 		{% for error in form.username.errors %}
 		  <li>{{ error }}</li>
 		{% endfor %}
 	    </ul>
-	  </td>
 	  <div class="form-group">
 	    {{ form.password.label }}
-	    {{ form.password }}
+	    {{ form.password(class="form-control") }}
 	    <small id="help" class="form-text text-muted">Enter your password.</small>
 	  </div>
-	  <td>
 	    <ul>
 		{% for error in form.password.errors %}
 		  <li>{{ error }}</li>
 		{% endfor %}
 	    </ul>
-	  </td>
-    </tr>
-  <tr>
-	  <td colspan="2">
       <button type="submit" class="btn btn-primary">Sign in!</button>
-	  </td>
-  </tr>
 </form>
 {% endblock %}
