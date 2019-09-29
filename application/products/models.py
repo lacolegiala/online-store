@@ -10,5 +10,5 @@ class Product(Base):
         self.name = name
         self.price = price
 
-class Order(Base):
+class StoreOrder(Base):
     user_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)

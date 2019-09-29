@@ -1,7 +1,8 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
-from application.products.models import Product
+from application.products.models import Product, StoreOrder
+from application.auth.models import User
 from application.products.forms import NewProductForm
 
 @app.route("/products", methods=["GET"])
@@ -61,3 +62,17 @@ def products_remove(product_id):
   db.session().commit()
 
   return redirect(url_for("products_index"))
+
+@app.route("/products/order", methods=["POST"])
+@login_required
+def products_order():
+
+  order = StoreOrder(user_id=current_user.id)
+  user = User.query.filter_by(id=current_user.id).first()
+  user.orders.append(order)
+
+  db.session().add(order)
+  db.session().commit()
+
+  return redirect(url_for("products_index"))
+
