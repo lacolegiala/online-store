@@ -68,8 +68,15 @@ def products_remove(product_id):
 def products_order():
 
   order = StoreOrder(user_id=current_user.id)
+  
   user = User.query.filter_by(id=current_user.id).first()
   user.orders.append(order)
+  
+  product1 = Product.query.filter_by(id=1).first()
+  product2 = Product.query.filter_by(id=2).first()
+  
+  order.products.append(product1)
+  order.products.append(product2)
 
   db.session().add(order)
   db.session().commit()
