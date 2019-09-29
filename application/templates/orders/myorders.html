@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>
+  My orders
+</h1>
+  <table class="table">
+    <thead>
+     <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price in cents</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

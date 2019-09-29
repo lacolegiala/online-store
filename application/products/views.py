@@ -83,3 +83,11 @@ def products_order():
 
   return redirect(url_for("products_index"))
 
+@app.route("/myorders", methods=["GET"])
+@login_required
+def my_orders():
+
+  orders = StoreOrder.query.filter_by(user_id=current_user.id)
+
+  return render_template("orders/myorders.html", orders = orders)
+

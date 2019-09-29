@@ -21,6 +21,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('products_form') }} ">Add a product</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('my_orders')}}">My orders</a>
+          </li>
         </ul>
         <div class="form-inline mt-2 mt-md-0">
           {% if current_user.is_authenticated %}
