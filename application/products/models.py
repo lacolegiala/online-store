@@ -10,5 +10,12 @@ class Product(Base):
         self.name = name
         self.price = price
 
+store_order_has_product = db.Table('store_order_has_product',
+    db.Column('store_order_id', db.Integer, db.ForeignKey('store_order.id'), primary_key=True),
+    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), primary_key=True)
+)
+
 class StoreOrder(Base):
     user_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    products = db.relationship('Product', secondary=store_order_has_product, lazy='subquery',
+        backref=db.backref('orders', lazy=True))
