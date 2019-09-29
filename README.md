@@ -9,7 +9,6 @@ Kirjauduttua verkkokauppaan asiakas voi selata tuotteita ja tehdä tilauksen. Ti
 - Kirjautuminen
 - Tuotteiden selailu
 - Tuotteen lisääminen ostoskoriin/poistaminen ostoskorista
-- Tuotteen lukumäärän määritys tilausta varten
 - Tilaaminen
 - Tietojen syöttö
 
