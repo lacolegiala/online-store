@@ -4,6 +4,8 @@
 <h1>
   My orders
 </h1>
+{% for order in orders %}
+  <h2>Order: {{ order.id }} - {{ order.date_created }}</h2>
   <table class="table">
     <thead>
      <tr>
@@ -13,11 +15,14 @@
     </tr>
     </thead>
     <tbody>
-    {% for order in orders %}
-      <tr>
-        <td>{{ order.id }}</td>
-      </tr>
-    {% endfor %}
+      {% for product in order.products %}
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
-  {% endblock %}
+{% endfor %}
+{% endblock %}

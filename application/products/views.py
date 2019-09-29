@@ -81,7 +81,7 @@ def products_order():
   db.session().add(order)
   db.session().commit()
 
-  return redirect(url_for("products_index"))
+  return redirect(url_for("my_orders"))
 
 @app.route("/myorders", methods=["GET"])
 @login_required
