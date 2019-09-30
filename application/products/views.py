@@ -88,6 +88,8 @@ def products_order():
 def my_orders():
 
   orders = StoreOrder.query.filter_by(user_id=current_user.id)
+  user_id = current_user.id
 
-  return render_template("orders/myorders.html", orders = orders)
+  return render_template("orders/myorders.html", orders = orders, i_have_spent=User.find_the_sum_of_spent_money_by_user(user_id))
+
 

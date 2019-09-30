@@ -6,6 +6,13 @@
 </h1>
 {% for order in orders %}
   <h2>Order: {{ order.id }} - {{ order.date_created }}</h2>
+  <ul>
+    {% for user in i_have_spent %}
+    <li>
+      You have spent {{ i_have_spent }} c.
+    </li>
+    {% endfor %}
+  </ul>
   <table class="table">
     <thead>
      <tr>
