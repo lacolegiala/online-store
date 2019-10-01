@@ -4,15 +4,9 @@
 <h1>
   My orders
 </h1>
-{% for order in orders %}
-  <h2>Order: {{ order.id }} - {{ order.date_created }}</h2>
-  <ul>
-    {% for user in i_have_spent %}
-    <li>
-      You have spent {{ i_have_spent }} c.
-    </li>
-    {% endfor %}
-  </ul>
+<h3>You have spent {{ i_have_spent }} c.</h3>
+  {% for order in orders %}
+    <h2>Order: {{ order.id }} - {{ order.date_created }}</h2>
   <table class="table">
     <thead>
      <tr>
