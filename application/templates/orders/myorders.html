@@ -4,7 +4,7 @@
 <h1>
   My orders
 </h1>
-<h3>You have spent {{ i_have_spent }} c.</h3>
+<h3>You have spent {{ i_have_spent / 100 }} €</h3>
   {% for order in orders %}
     <h2>Order: {{ order.id }} - {{ order.date_created }}</h2>
   <table class="table">
@@ -12,7 +12,7 @@
      <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Price in cents</th>
+      <th>Price</th>
     </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
         <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
+          <td>{{ product.price / 100 }} €</td>
         </tr>
       {% endfor %}
     </tbody>

@@ -6,7 +6,7 @@
      <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Price in cents</th>
+      <th>Price</th>
       <th>Edit</th>
       <th>Remove</th>
     </tr>
@@ -16,7 +16,7 @@
       <tr>
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
+        <td>{{ product.price / 100 }} €</td>
         <td>
           <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
             Edit

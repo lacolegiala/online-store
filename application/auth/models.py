@@ -37,7 +37,7 @@ class User(Base):
                     " HAVING store_order.user_id = :user_id").params(user_id =  user_id)
         res = db.engine.execute(stmt)
 
-        response = []
+        response = 0
         for row in res:
             response = row[1]
 
