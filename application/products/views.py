@@ -66,6 +66,8 @@ def products_remove(product_id):
 @app.route("/products/order", methods=["POST"])
 @login_required
 def products_order():
+  if len(request.form.getlist('orderProduct')) == 0:
+    return render_template("products/list.html", products = Product.query.all(), error = "You must select at least 1 item")
 
   order = StoreOrder(user_id=current_user.id)
   
