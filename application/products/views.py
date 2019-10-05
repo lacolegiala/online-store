@@ -67,8 +67,6 @@ def products_remove(product_id):
 @login_required
 def products_order():
 
-  print(request.form.getlist('orderProduct'))
-
   order = StoreOrder(user_id=current_user.id)
   
   user = User.query.filter_by(id=current_user.id).first()
@@ -88,7 +86,7 @@ def products_order():
 @login_required
 def my_orders():
 
-  orders = StoreOrder.query.filter_by(user_id=current_user.id)
+  orders = StoreOrder.query.filter_by(user_id=current_user.id).order_by(StoreOrder.date_created.desc())
   user_id = current_user.id
 
   return render_template("orders/myorders.html", orders = orders, i_have_spent=User.find_the_sum_of_spent_money_by_user(user_id))
