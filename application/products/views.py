@@ -67,16 +67,17 @@ def products_remove(product_id):
 @login_required
 def products_order():
 
+  print(request.form.getlist('orderProduct'))
+
   order = StoreOrder(user_id=current_user.id)
   
   user = User.query.filter_by(id=current_user.id).first()
   user.orders.append(order)
   
-  product1 = Product.query.filter_by(id=1).first()
-  product2 = Product.query.filter_by(id=2).first()
+  products = Product.query.filter(Product.id.in_(request.form.getlist('orderProduct'))).all()
   
-  order.products.append(product1)
-  order.products.append(product2)
+  for product in products:
+    order.products.append(product)
 
   db.session().add(order)
   db.session().commit()

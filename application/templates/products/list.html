@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<form action="{{ url_for('products_order')}}" method="POST">
   <table class="table">
     <thead>
      <tr>
       <th>Id</th>
       <th>Name</th>
       <th>Price</th>
+      <th>Order</th>
       <th>Edit</th>
       <th>Remove</th>
     </tr>
@@ -18,20 +20,22 @@
         <td>{{ product.name }}</td>
         <td>{{ product.price / 100 }} €</td>
         <td>
-          <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
-            Edit
-          </a>
+          <input type="checkbox" name="orderProduct" value="{{ product.id }}">
         </td>
-        <td>
-          <a href="{{ url_for('products_remove', product_id=product.id)}}">
-            Remove
-          </a>
-        </td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-  <form method="POST" action="{{ url_for('products_order')}}">
-    <button type="submit" class="btn btn-primary">Add items 1 and 2 to order</button>
+          <td>
+            <a href="{{ url_for('products_edit', product_id=product.id)}}"> 
+              Edit
+            </a>
+          </td>
+          <td>
+            <a href="{{ url_for('products_remove', product_id=product.id)}}">
+              Remove
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Order selected items</button>
   </form>
   {% endblock %}
