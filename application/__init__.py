@@ -1,10 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from application.db import db
-from application.app import app
-
 from flask_security import Security, SQLAlchemyUserDatastore
 
 from application.auth.models import User, Role
+from application.db import db
+from application.app import app
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
