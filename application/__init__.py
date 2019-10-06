@@ -1,29 +1,34 @@
-from flask import Flask
-app = Flask(__name__)
-
 from flask_sqlalchemy import SQLAlchemy
+from application.db import db
+from application.app import app
 
-import os
+from flask_security import Security, SQLAlchemyUserDatastore
 
-if os.environ.get("HEROKU"):
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///products.db"    
-    app.config["SQLALCHEMY_ECHO"] = True
+from application.auth.models import User, Role
 
-db = SQLAlchemy(app)
+# Setup Flask-Security
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+security = Security(app, user_datastore)
+
+@app.before_first_request
+def seed_roles():
+  user_datastore.find_or_create_role('admin')
+  user_datastore.find_or_create_role('user')
+
+  adminUser = User.query.filter_by(username='admin').first()
+  if not adminUser:
+    adminUser = user_datastore.create_user(username='admin', password='1234567890')
+    user_datastore.add_role_to_user(adminUser, 'admin')
+  
+  db.session.commit()
+
 
 from application import views
 
 from application.products import models
 from application.products import views
 
-from application.auth import models
 from application.auth import views 
-
-from application.auth.models import User
-from os import urandom
-app.config["SECRET_KEY"] = urandom(32)
 
 from flask_login import LoginManager
 login_manager = LoginManager()

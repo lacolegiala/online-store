@@ -1,7 +1,17 @@
-from application import db
+from application.db import db
 from application.models import Base
 
+from flask_security import RoleMixin
+
 from sqlalchemy.sql import text
+
+roles_users = db.Table('roles_users',
+        db.Column('user_id', db.Integer(), db.ForeignKey('account.id')),
+        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+
+class Role(db.Model, RoleMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
 
 class User(Base):
 
@@ -10,12 +20,11 @@ class User(Base):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
     orders = db.relationship('StoreOrder', backref='account', lazy=True)
+    active = db.Column(db.Boolean())
+    roles = db.relationship('Role', secondary=roles_users,
+                            backref=db.backref('users', lazy='dynamic'))
 
 
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-  
     def get_id(self):
         return self.id
 

@@ -4,18 +4,19 @@ from flask_login import login_required, current_user
 from application.products.models import Product, StoreOrder
 from application.auth.models import User
 from application.products.forms import NewProductForm
+from flask_security.decorators import roles_required
 
 @app.route("/products", methods=["GET"])
 def products_index():
     return render_template("products/list.html", products = Product.query.all())
 
 @app.route("/products/new/")
-@login_required
+@roles_required('admin')
 def products_form():
     return render_template("products/new.html", form = NewProductForm())
 
 @app.route("/products/edit/<product_id>")
-@login_required
+@roles_required('admin')
 def products_edit(product_id):
   product = Product.query.get(product_id)
   form = NewProductForm()
@@ -25,6 +26,7 @@ def products_edit(product_id):
   return render_template("products/edit.html", form = form, product_id = product_id)
   
 @app.route("/products/<product_id>/", methods=["POST"])
+@roles_required('admin')
 def products_set_done(product_id):
     form = NewProductForm(request.form)
 
@@ -40,7 +42,7 @@ def products_set_done(product_id):
     return redirect(url_for("products_index"))
 
 @app.route("/products/", methods=["POST"])
-@login_required
+@roles_required('admin')
 def products_create():
     form = NewProductForm(request.form)
 
@@ -55,7 +57,7 @@ def products_create():
     return redirect(url_for("products_index"))
 
 @app.route("/products/remove/<product_id>", methods=["GET"])
-@login_required
+@roles_required('admin')
 def products_remove(product_id):
   Product.query.filter_by(id=product_id).delete()
 

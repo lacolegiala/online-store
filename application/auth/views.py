@@ -3,8 +3,10 @@ from flask_login import login_user, logout_user
 from application import db
 
 from application import app
-from application.auth.models import User
+from application.auth.models import User, Role
 from application.auth.forms import LoginForm
+
+from application import user_datastore
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -32,15 +34,16 @@ def auth_register():
   return render_template("auth/register.html", form = LoginForm())
 
 @app.route("/auth/register", methods = ["POST"])
+# TODO: change the name
 def auth_register_lol():
     form = LoginForm(request.form)
 
     if not form.validate():
         return redirect(url_for("products_index"))
 
-    user = User(form.username.data, form.password.data)
+    user = user_datastore.create_user(username=form.username.data, password=form.password.data)
+    user_datastore.add_role_to_user(user, 'user')
 
-    db.session().add(user)
     db.session().commit()
 
     login_user(user)
