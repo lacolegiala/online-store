@@ -1,7 +1,30 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-    Welcome to Sophira online store!
-  </p>
+<form action="{{ url_for('products_order')}}" method="POST">
+  <table class="table">
+    <thead>
+     <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Order</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+      <tr>  
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price / 100 }} €</td>
+        <td>
+          <input type="checkbox" name="orderProduct" value="{{ product.id }}">
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div>{{ error }}</div>
+  <button type="submit" class="btn btn-primary">Order selected items</button>
+</form>
 {% endblock %}

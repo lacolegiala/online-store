@@ -7,6 +7,7 @@ from application.products.forms import NewProductForm
 from flask_security.decorators import roles_required
 
 @app.route("/products", methods=["GET"])
+@roles_required('admin')
 def products_index():
     return render_template("products/list.html", products = Product.query.all())
 
