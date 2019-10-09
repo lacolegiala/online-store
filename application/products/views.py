@@ -70,7 +70,7 @@ def products_remove(product_id):
 @login_required
 def products_order():
   if len(request.form.getlist('orderProduct')) == 0:
-    return render_template("products/list.html", products = Product.query.all(), error = "You must select at least 1 item")
+    return render_template("index.html", products = Product.query.all(), error = "You must select at least 1 item")
 
   order = StoreOrder(user_id=current_user.id)
   

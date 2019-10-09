@@ -5,6 +5,8 @@ from flask_security import RoleMixin
 
 from sqlalchemy.sql import text
 
+from flask_security.core import UserMixin
+
 roles_users = db.Table('roles_users',
         db.Column('user_id', db.Integer(), db.ForeignKey('account.id')),
         db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
@@ -36,6 +38,9 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    def has_role(self, role):
+        return role in self.roles
 
     @staticmethod
     def find_the_sum_of_spent_money_by_user(user_id):
