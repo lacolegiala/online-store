@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form action="{{ url_for('products_order')}}" method="POST">
   <table class="table">
     <thead>
      <tr>
@@ -33,5 +32,4 @@
       </tbody>
     </table>
     <div>{{ error }}</div>
-  </form>
-  {% endblock %}
+{% endblock %}
