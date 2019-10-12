@@ -29,6 +29,8 @@ from application.products import views
 
 from application.auth import views 
 
+from application.users import views
+
 from flask_login import LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
