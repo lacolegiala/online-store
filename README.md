@@ -27,14 +27,16 @@ https://lacolegiala-online-store.herokuapp.com
 CREATE TABLE statements:
 
 
-~~~~`CREATE TABLE role (`
-`id INTEGER NOT NULL,`
-`name VARCHAR(80),` 
-`PRIMARY KEY (id), `
-`UNIQUE (name)`
-`);`
-~~~~
+```
+CREATE TABLE role (
+id INTEGER NOT NULL,
+name VARCHAR(80),
+PRIMARY KEY (id), 
+UNIQUE (name)
+);
+```
 
+```
 CREATE TABLE account (
 
 	id INTEGER NOT NULL, 
@@ -46,7 +48,9 @@ CREATE TABLE account (
 	PRIMARY KEY (id), 
 	CHECK (active IN (0, 1))
 );
+````
 
+```
 CREATE TABLE product (
 
 	id INTEGER NOT NULL, 
@@ -56,7 +60,8 @@ CREATE TABLE product (
 	price INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
-
+```
+```
 CREATE TABLE roles_users (
 
 	user_id INTEGER, 
@@ -64,7 +69,9 @@ CREATE TABLE roles_users (
 	FOREIGN KEY(user_id) REFERENCES account (id), 
 	FOREIGN KEY(role_id) REFERENCES role (id)
 );
+```
 
+```
 CREATE TABLE store_order (
 
 	id INTEGER NOT NULL, 
@@ -74,7 +81,9 @@ CREATE TABLE store_order (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES account (id)
 );
+```
 
+```
 CREATE TABLE store_order_has_product (
 
 	store_order_id INTEGER NOT NULL, 
@@ -83,6 +92,7 @@ CREATE TABLE store_order_has_product (
 	FOREIGN KEY(store_order_id) REFERENCES store_order (id), 
 	FOREIGN KEY(product_id) REFERENCES product (id)
 )
+```
 
 
 
@@ -124,7 +134,6 @@ try this:
 ```
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
-pip install psycopg2
 ```
 Then try to install dependencies again.
 
