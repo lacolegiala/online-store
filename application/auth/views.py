@@ -39,7 +39,7 @@ def auth_register_lol():
     form = LoginForm(request.form)
 
     if not form.validate():
-        return redirect(url_for("products_index"))
+        return render_template("auth/register.html", form = form)
 
     user = user_datastore.create_user(username=form.username.data, password=form.password.data)
     user_datastore.add_role_to_user(user, 'user')
