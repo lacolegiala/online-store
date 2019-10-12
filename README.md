@@ -27,13 +27,13 @@ https://lacolegiala-online-store.herokuapp.com
 CREATE TABLE statements:
 
 
-CREATE TABLE role (
-
-	id INTEGER NOT NULL,
-	name VARCHAR(80), 
-	PRIMARY KEY (id), 
-	UNIQUE (name)
-);
+~~~~`CREATE TABLE role (`
+`id INTEGER NOT NULL,`
+`name VARCHAR(80),` 
+`PRIMARY KEY (id), `
+`UNIQUE (name)`
+`);`
+~~~~
 
 CREATE TABLE account (
 
@@ -113,11 +113,20 @@ Next, activate it.
 
 Install dependencies.
 
-``pip install Flask``
+`pip install -r requirements.txt`
 
-``pip install flask-sqlalchemy``
+If you face this error when installing dependencies
 
-``pip install flask-security``
+`ld: library not found for -lssl`
+
+try this:
+
+```
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+pip install psycopg2
+```
+Then try to install dependencies again.
 
 
 
