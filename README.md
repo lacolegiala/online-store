@@ -27,18 +27,17 @@ https://lacolegiala-online-store.herokuapp.com
 CREATE TABLE statements:
 
 
-```
+```sql
 CREATE TABLE role (
-id INTEGER NOT NULL,
-name VARCHAR(80),
-PRIMARY KEY (id), 
-UNIQUE (name)
+	id INTEGER NOT NULL,
+	name VARCHAR(80),
+	PRIMARY KEY (id), 
+	UNIQUE (name)
 );
 ```
 
-```
+```sql
 CREATE TABLE account (
-
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
@@ -48,11 +47,10 @@ CREATE TABLE account (
 	PRIMARY KEY (id), 
 	CHECK (active IN (0, 1))
 );
-````
-
 ```
-CREATE TABLE product (
 
+```sql
+CREATE TABLE product (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
@@ -61,9 +59,8 @@ CREATE TABLE product (
 	PRIMARY KEY (id)
 );
 ```
-```
+```sql
 CREATE TABLE roles_users (
-
 	user_id INTEGER, 
 	role_id INTEGER, 
 	FOREIGN KEY(user_id) REFERENCES account (id), 
@@ -71,9 +68,8 @@ CREATE TABLE roles_users (
 );
 ```
 
-```
+```sql
 CREATE TABLE store_order (
-
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
@@ -83,9 +79,8 @@ CREATE TABLE store_order (
 );
 ```
 
-```
+```sql
 CREATE TABLE store_order_has_product (
-
 	store_order_id INTEGER NOT NULL, 
 	product_id INTEGER NOT NULL, 
 	PRIMARY KEY (store_order_id, product_id), 
@@ -93,11 +88,6 @@ CREATE TABLE store_order_has_product (
 	FOREIGN KEY(product_id) REFERENCES product (id)
 )
 ```
-
-
-
-
-
 
 ## Details
 
@@ -115,11 +105,11 @@ Admin can do everything that regular users can, and in addition add, edit and de
 
 First, create Python virtual environment.
 
-``python3 -m venv venv``
+`python3 -m venv venv`
 
 Next, activate it.
 
-``source venv/bin/activate``
+`source venv/bin/activate`
 
 Install dependencies.
 
@@ -131,7 +121,7 @@ If you face this error when installing dependencies
 
 try this:
 
-```
+```bash
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 ```
