@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import current_user
+from flask_login import current_user, logout_user
 from application import db
 
 from application import app
@@ -25,3 +25,14 @@ def profile_edited():
   db.session().commit()
 
   return redirect(url_for("index"))
+
+@app.route("/profile/delete", methods =["GET"])
+def profile_delete():
+
+  User.query.filter_by(id=current_user.id).delete()
+
+  logout_user()
+  db.session().commit()
+
+  return redirect(url_for("index"))
+
