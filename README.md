@@ -13,6 +13,10 @@ After logging in, the user can both browse and order the products. The products 
 - Adding products (admin)
 - Deleting and editing products (admin)
 
+## ⚠️ Known bugs
+
+The delete feature doesn't work in the production! So please don't remove products or accounts until it's fixed. This will be fixed in the near future.
+
 
 ## Demo
 
