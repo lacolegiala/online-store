@@ -8,6 +8,6 @@ from flask import session
 @app.route("/")
 def index():
 
-  productList = Product.order_by_bestselling(Product.query.all())
+  productList = Product.order_by_bestselling()
 
   return render_template("index.html", products = productList)

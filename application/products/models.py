@@ -12,8 +12,8 @@ class Product(Base):
         self.name = name
         self.price = price
 
-    @classmethod
-    def order_by_bestselling(cls, products):
+    @staticmethod
+    def order_by_bestselling():
         stmt = text("SELECT * FROM product"
                     " JOIN store_order_has_product ON product.id = store_order_has_product.product_id "
                     " GROUP BY store_order_has_product.product_id "
