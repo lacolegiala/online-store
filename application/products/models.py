@@ -16,7 +16,7 @@ class Product(Base):
     def order_by_bestselling():
         stmt = text("SELECT * FROM product"
                     " JOIN store_order_has_product ON product.id = store_order_has_product.product_id "
-                    " GROUP BY store_order_has_product.product_id, Product.id "
+                    " GROUP BY store_order_has_product.store_order_id, store_order_has_product.product_id, product.id "
                     " ORDER BY COUNT(*) DESC")
         res = db.engine.execute(stmt)
 
