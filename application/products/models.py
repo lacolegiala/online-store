@@ -34,5 +34,8 @@ class StoreOrder(Base):
         for row in res:
             response = row[0]
 
-        return response
+        if response is not None:
+            return response
+
+        return 0
 
