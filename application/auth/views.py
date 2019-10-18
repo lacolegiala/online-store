@@ -34,8 +34,7 @@ def auth_register():
   return render_template("auth/register.html", form = LoginForm())
 
 @app.route("/auth/register", methods = ["POST"])
-# TODO: change the name
-def auth_register_lol():
+def auth_registered():
     form = LoginForm(request.form)
 
     if not form.validate():
