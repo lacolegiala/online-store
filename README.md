@@ -24,7 +24,6 @@ After logging in, the user can both browse and order the products. The products 
 
 The delete feature doesn't work in the production! So please don't remove products or accounts until it's fixed. This will be fixed in the near future.
 
-
 ## Demo
 
 A link to the production:
@@ -32,4 +31,9 @@ A link to the production:
 https://lacolegiala-online-store.herokuapp.com
 
 The username for admin is "admin" and the password is "1234567890"
+
+## Missing features and limitations
+
+- The admin cannot see the users' orders
+- An email attribute is missing from User table
 
